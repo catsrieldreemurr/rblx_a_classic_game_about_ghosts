@@ -1,4 +1,6 @@
-local CollectionService = game:GetService("CollectionService")
+
+local ReplicatedStorage=  game:GetService("ReplicatedStorage")
+local toolModule = require(ReplicatedStorage.Shared.modules.tool)
 
 -- Helper Functions
 function setIsEnabled(part:Tool, bool:boolean)
@@ -24,14 +26,4 @@ function flashlightToggle(part:Tool)
 end
 
 -- Collection Service stuff 
-for _, part:Tool in CollectionService:GetTagged("flashlight") do 
-    part.Activated:Connect(function()
-        flashlightToggle(part)
-    end)
-end
-
-CollectionService:GetInstanceAddedSignal("flashlight"):Connect(function(part:Tool)
-    part.Activated:Connect(function()
-        flashlightToggle(part)   
-    end)
-end)
+toolModule.setupTool("flashlight", flashlightToggle)
