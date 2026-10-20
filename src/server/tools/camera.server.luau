@@ -1,8 +1,8 @@
 local ReplicatedStorage=  game:GetService("ReplicatedStorage")
 local toolModule = require(ReplicatedStorage.Shared.modules.tool)
 
-function CameraToolSnap()
-    print("snapped a pic lolol hii")
+function CameraToolSnap(part:Tool)
+    print("Camera")
 end
 
 toolModule.setupTool("camera_tool", CameraToolSnap)
